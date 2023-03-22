@@ -7,13 +7,24 @@
 
 import SwiftUI
 
+
+
+    
+
 struct ContentView: View {
+    @State var isAlert = true
+    @State private var vibrateOnRing = false
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+            Toggle(isOn: $vibrateOnRing) {
+                Text("Vibrate on Ring")
+            }
+        }.alert(isPresented: $isAlert){
+            Alert(title: Text("Ошибка"),dismissButton: .default(Text("OK")))
         }
         .padding()
     }
